@@ -21,6 +21,20 @@ app.secret_key = "q7vytnycnv3y7nc87y8wedssw4ytv5beyv748sytvn74vynt"
 
 title = "scrap dealings"
 
+posts = [
+    {
+        "title": "Title 1",
+        "author": "Vyasa",
+        "img_src": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "title": "Title 2",
+        "author": "Samwin",
+        "img_src": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+]
+
+
 def checkCookie(u_name):
     if collection.find({"username":u_name}):
                 return True
@@ -64,7 +78,7 @@ def index():
     if not session.get("username"):
         return redirect("/login")
 
-    return render_template("index.html", title=title, user=session.get("username"))
+    return render_template("index.html", title=title, user=session.get("username"), posts=posts)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -110,6 +124,24 @@ def register():
             return render_template("register.html")
 
 
+@app.route("/post", methods=["GET", "POST"])
+def post():
+    if request.method == "GET":
+        return render_template("post.html")
+    if request.method == "POST":
+        ...
+
+
+@app.route("/post/<pid>")
+def post_page(pid):
+    post_title = ...
+    post_author = ...
+    img_src = ...
+    description = ...
+
+    return render_template("postpage.html", post_title=post_title, post_author=post_author, img_src=img_src, description=description)
+
+    
 @app.route("/logout")
 def logout():
     session["username"] = None
