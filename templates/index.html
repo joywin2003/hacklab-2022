@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    <h1>You are logged in as {{ user }}.</h1>
+
     {% for post in posts %}
     <div class="title">
         <h1>{{ post.title|e }}</h1>
