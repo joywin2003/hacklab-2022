@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewportdevice-widthdevice-width" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/base.css') }}" type="text/css" rel="stylesheet">
     <title>{{ title }}</title>
 </head>
 <body>
 
-    {{% block navbar %}}{{% endblock %}}
-
-    {{% block content %}}{{% endblock %}}
+    {% block content %}{% endblock %}
 
     <footer></footer>
 
