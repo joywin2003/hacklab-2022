@@ -26,7 +26,7 @@ def checkCookie(u_name):
 
 
 
-def isValid(u_name, p_word):
+def is_logged_in(u_name, p_word):
     with open("static/user.csv", 'r') as db:
         reader = DictReader(db)
         for row in reader:
@@ -54,22 +54,27 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
+        # LOGIN INFO HERE
         username = request.form.get("username")
         password = request.form.get("password")
-        if isValid(username, password):
+        if is_logged_in(username, password):
             session["username"] = username
-            return render_template('index.html', title=title, user=username)
+            return redirect('/')
         
         return render_template("login.html", error="Invalid Password")
 
     if request.method == "GET":
-        return render_template("login.html")
+        if checkCookie(session.get("username")):
+            return redirect('/')
+        else:
+            return render_template("login.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
     if request.method == "POST":
+        # REGISTRATION INFO HERE
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
@@ -80,7 +85,7 @@ def register():
 
     if request.method == "GET":
         if checkCookie(session.get("username")):
-            return render_template("login.html")
+            return redirect('/')
         else:
             return render_template("register.html")
 
@@ -88,7 +93,7 @@ def register():
 @app.route("/logout")
 def logout():
     session["username"] = None
-    return render_template("index.html", title=title, user=None)
+    return redirect("/login")
 
 
 if __name__ == "__main__":
