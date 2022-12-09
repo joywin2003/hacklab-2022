@@ -20,12 +20,14 @@ posts = [
     {
         "title": "Title 1",
         "author": "Vyasa",
-        "img_src": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=600"
+        "img_src": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "time_created": "02:46 AM"
     },
     {
         "title": "Title 2",
         "author": "Samwin",
-        "img_src": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=600"
+        "img_src": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "time_created": "03:07 AM"
     }
 ]
 

@@ -1,22 +1,21 @@
 {% extends "navbar_in.html" %}
 
 {% block content %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" type="text/css">
 
-    <h1>You are logged in as {{ user }}.</h1>
-
-    {% for post in posts %}
-    <div class="post">
-        <div class="title">
-            <h1>{{ post.title|e }}</h1>
-        </div>
-        <div class="author">
-            <h4>{{ post.author|e }}</h4>
-        </div>
-        <div class="image">
-            <img src="{{ post.img_src|e }}">
-        </div>
+    <div class="post container" style="width: 900px">
+        {% for post in posts %}
+            <div class="card-header">
+                {{ post.author|e }}
+            </div>
+            <div class="card mb-3">
+                <img src="{{ post.image|e }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title|e }}</h5>
+                    <p class="card-text">{{ post.description }}</p>
+                    <p class="card-text"><small class="text-muted">{{ post.time_created }}</small></p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
 {% endblock %}
