@@ -90,6 +90,13 @@ def register():
             return render_template("register.html")
 
 
+@app.route("/post", methods=["GET", "POST"])
+def post():
+    if request.method == "GET":
+        return render_template("post.html")
+    if request.method == "POST":
+        ...
+    
 @app.route("/logout")
 def logout():
     session["username"] = None

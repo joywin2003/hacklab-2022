@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <form action="/post" class="submit_post" method="post">
+        <table>
+            <tr>
+                <input type="text" name="title">
+            </tr>
+            <tr>
+                <textarea name="description" rows="5">
+                </textarea>
+            </tr>
+            <tr>
+                <input type="file" accept="image/*" onchange="loadFile" name="picture">
+            </tr>
+            <tr>
+                <img id="preview" width="200">
+            </tr>
+                <input type="submit">
+        </table>
+    </form>
+
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src=URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+
+{% endblock %}
