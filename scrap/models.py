@@ -1,6 +1,6 @@
 from datetime import datetime
 from scrap import db, login_manager
-from scrap import UserMixin
+from flask_login import UserMixin
 
 
 @login_manager.user_loader
