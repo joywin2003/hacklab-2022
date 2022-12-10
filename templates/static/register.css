@@ -1,0 +1,11 @@
+body{
+  text-align: center;
+  margin-top: 15%;
+}
+.container{
+  width:50%;
+  border:1px solid #ccc;
+  border-radius: 10px;
+  margin:auto;
+  padding-bottom: 3%;
+}

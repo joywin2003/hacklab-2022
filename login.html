@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="register.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1>LOGIN</h1>
-      <form class="" action="index.html" method="post">
-          <label for="">Email:</label>
-          <input type="email" name="" value=""><br><br>
-          <label for="">Password:</label>
-          <input type="password" name="" value=""><br><br>
-          <input type="submit" name="">
-      </form>
-    </div>
 
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>LOGIN</h1>
+    <form class="" action="index.html" method="post">
+      <div class="cred-page">
+      <table>
+        <tr>
+          <td>
+            <label for="">Username:</label>
+          </td>
+          <td>
+            <input type="text" name="username" value=""><br><br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Email:</label>
+          </td>
+          <td>
+            <input type="email" name="email" value=""><br><br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Password: </label>
+          </td>
+          <td>
+            <input type="password" name="password" value=""><br><br>
+          </td>
+        </tr>
+        </table>
+      </div>
+      <div class="">
+        <button type="button" class="btn btn-success">Login</button>
+      </div>
+    </form>
+  </div>
+  <p>Don't have an account?<a href="register.html">Register</a></p>
+
+</body>
+
 </html>
