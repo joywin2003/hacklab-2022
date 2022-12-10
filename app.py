@@ -1,6 +1,11 @@
 from datetime import datetime
+import pymongo
 from csv import DictReader, DictWriter, QUOTE_NONNUMERIC
 from flask import Flask, render_template, session, url_for, request, redirect
+client = pymongo.MongoClient("mongodb://localhost:27017")
+db = client['cirus']
+collection = db['mongoSam']
+
 
 
 db = open("static/users.csv", 'a')
@@ -33,28 +38,39 @@ posts = [
 
 
 def checkCookie(u_name):
-    with open("static/user.csv", 'r') as db:
-        reader = DictReader(db)
-        for row in reader:
-            if u_name == row["username"]:
+    if collection.find({"username":u_name}):
                 return True
     return False
 
 
 
 def is_logged_in(u_name, p_word):
-    with open("static/user.csv", 'r') as db:
-        reader = DictReader(db)
-        for row in reader:
-            if u_name == row["username"] and p_word == row["password"]:
-                return True
-    return False
+    # with open("static/user.csv", 'r') as db:
+    #     reader = DictReader(db)
+    #     for row in reader:
+    #         if u_name == row["username"] and p_word == row["password"]:
+    val = collection.find({"username":u_name,"password":p_word})
+    count = 0
+    for item in val:
+        count = count + 1
+    if count:
+        count = 0
+        return True
+    else:
+      return False
 
 
 def addUser(u_name, e_mail, p_word):
     with open("static/user.csv", 'a') as db:
         writer = DictWriter(db, fieldnames=["username", "email", "password"])
         writer.writerow({"username": u_name, "email": e_mail, "password": p_word}, QUOTE_NONNUMERIC)
+        value = [
+            {"username":u_name},
+            {"email": e_mail},
+            {"password":p_word}
+        ]
+        collection.insert_many(value)
+
 
 
 @app.route("/")
@@ -80,7 +96,7 @@ def login():
         return render_template("login.html", error="Invalid Password")
 
     if request.method == "GET":
-        if checkCookie(session.get("username")):
+        if session.get("username"):
             return redirect('/')
         else:
             return render_template("login.html")
@@ -94,8 +110,12 @@ def register():
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
+        user_registered = [
+            {"username": username, "email": email,"password": password}                     
+        ]
+        collection.insert_many(user_registered)
         # conf_pass = request.forms.get("conf_pass")
-        addUser(username, email, password)
+        # addUser(username, email, password)
         session["username"] = username
         return render_template("index.html", title=title, user=username)
 
