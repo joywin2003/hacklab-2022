@@ -2,6 +2,7 @@ from datetime import datetime
 import pymongo
 from csv import DictReader, DictWriter, QUOTE_NONNUMERIC
 from flask import Flask, render_template, session, url_for, request, redirect
+
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db = client['cirus']
 collection = db['mongoSam']
@@ -35,13 +36,6 @@ posts = [
         "time_created": "03:07 AM"
     }
 ]
-
-
-def checkCookie(u_name):
-    if collection.find({"username":u_name}):
-                return True
-    return False
-
 
 
 def is_logged_in(u_name, p_word):
@@ -120,7 +114,7 @@ def register():
         return render_template("index.html", title=title, user=username)
 
     if request.method == "GET":
-        if checkCookie(session.get("username")):
+        if collection.find({"username":session.get("username")}):
             return redirect('/')
         else:
             return render_template("register.html")
