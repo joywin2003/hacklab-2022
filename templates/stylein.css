@@ -1,0 +1,10 @@
+.nav-item{
+  margin-right: 10px;
+}
+.nav-item:hover{
+  color:green;
+}
+.navbar-brand{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}

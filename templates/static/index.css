@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+.post {
+    width: 900px;
+    border: 2px solid grey;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.title {
+    size: 2rem;
+    padding: 15px;
+}
+
+.author {
+    size: 0.8rem;
+    padding: 15px;
+}
+
+.image {
+    size: 2rem;
+    padding: 15px;
+}

@@ -1,0 +1,22 @@
+body{
+  text-align: center;
+  margin-top: 15%;
+  background-color: #E5D9B6;
+}
+.container{
+  width:30%;
+  border:3px solid black;
+  border-radius: 10px;
+  margin:auto;
+  padding-bottom: 3%;
+  background-color:#A4BE7B;
+}
+h1{
+  padding:3%;
+}
+
+.cred-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

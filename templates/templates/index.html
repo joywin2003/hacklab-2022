@@ -1,0 +1,21 @@
+{% extends "navbar_in.html" %}
+
+{% block content %}
+
+    <div class="post container" style="width: 900px">
+        {% for post in posts %}
+            <div class="card-header">
+                {{ post.author|e }}
+            </div>
+            <div class="card mb-3">
+                <img src="{{ post.img_src }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title|e }}</h5>
+                    <p class="card-text">{{ post.description }}</p>
+                    <p class="card-text"><small class="text-muted">{{ post.time_created }}</small></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

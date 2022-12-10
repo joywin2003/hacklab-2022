@@ -1,0 +1,11 @@
+
+
+.container{
+  width: 60%;
+}
+.card-header{
+  background:#5F8D4E;
+}
+.card{
+  border:2px solid #E5D9B6;
+}
