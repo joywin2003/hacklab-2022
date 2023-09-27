@@ -6,7 +6,6 @@ Welcome to our team's official repository for the Hacklab hackathon, hosted by C
 2. Samwin Steve Pierera
 3. Charis Pinto 
 4. Joywin Bennis
-5. Ciana Rodriguez 
 
 ## Project Description
 Bartit is a web platform that aims to promote the exchange of goods and services between individuals in a community. Inspired by the "barter system", Bartit facilitates a platform for people to trade goods and services without the need for traditional currency.
